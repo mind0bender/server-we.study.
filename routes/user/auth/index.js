@@ -12,7 +12,7 @@ UserAuth.post("/signup", (req, res, next) => {
   const errs = [];
 
   if (!data.name || !data.name.trim() || validator.isEmail(data.name)) {
-    errs.push(`Invalid name ${data.name}`);
+    errs.push(`Invalid name: ${data.name}`);
   }
   if (!data.email) {
     errs.push(`Email is required`);
@@ -33,7 +33,7 @@ UserAuth.post("/signup", (req, res, next) => {
         res: false,
         errs,
         msg: `There ${
-          errs.length == 1 ? "is an error" : `are total ${errs.length}`
+          errs.length == 1 ? "is an error" : `are total ${errs.length} errors`
         }`,
       })
     );
@@ -75,7 +75,9 @@ UserAuth.post("/signup", (req, res, next) => {
                 res: false,
                 errs,
                 msg: `There ${
-                  errs.length == 1 ? "is an error" : `are total ${errs.length}`
+                  errs.length == 1
+                    ? "is an error"
+                    : `are total ${errs.length} errors`
                 }`,
               })
             );
@@ -114,7 +116,7 @@ UserAuth.post("/signin", (req, res, next) => {
         res: false,
         errs,
         msg: `There ${
-          errs.length == 1 ? "is an error" : `are total ${errs.length}`
+          errs.length == 1 ? "is an error" : `are total ${errs.length} errors`
         }`,
       })
     );
@@ -173,7 +175,7 @@ UserAuth.post("/verify", (req, res, next) => {
         data: {
           token,
         },
-        errs: [`Token is required ${token}`],
+        errs: [`Token is required: ${token}`],
         msg: "Token is required",
       })
     );

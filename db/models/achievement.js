@@ -9,9 +9,21 @@ const Achievement = Schema({
     type: Date,
     required: true,
   },
+  color: {
+    type: String,
+    default: "#ffffff",
+  },
   user: {
     type: Schema.Types.ObjectId,
     required: true,
+  },
+  group: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+  level: {
+    type: Number,
+    default: -1,
   },
 });
 
