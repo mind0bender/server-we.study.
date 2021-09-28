@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const { underline } = require("chalk");
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const routes = require("./routes");
 const response = require("./utils/response");
 
@@ -10,6 +11,7 @@ const app = express();
 
 // Middlewares
 app.use(morgan("tiny"));
+app.use(cors({}));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({

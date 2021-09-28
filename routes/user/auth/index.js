@@ -7,6 +7,11 @@ const { tokenGenerator, tokenDecoder } = require("../../../utils/jsonwebtoken");
 
 const UserAuth = Router();
 
+/**
+ * @param data name email password;
+ * * User signup route
+ * ? Should i implement google signup also?
+ */
 UserAuth.post("/signup", (req, res, next) => {
   const data = req.body;
   const errs = [];
@@ -88,6 +93,11 @@ UserAuth.post("/signup", (req, res, next) => {
   }
 });
 
+/**
+ * @param data nameOrEmail password
+ * * user signin route
+ */
+
 UserAuth.post("/signin", (req, res, next) => {
   const data = req.body;
   const errs = [];
@@ -165,6 +175,11 @@ UserAuth.post("/signin", (req, res, next) => {
       .catch(next);
   }
 });
+
+/**
+ * @param data token
+ * * JWT verification route for user
+ */
 
 UserAuth.post("/verify", (req, res, next) => {
   const { token } = req.body;
