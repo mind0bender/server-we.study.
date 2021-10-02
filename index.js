@@ -37,12 +37,14 @@ app.get("/errorstructure", (req, res) => {
   throw new Error("Error structure");
 });
 
+app.use("/", express.static("public"));
+
 // Database
 require("./db");
 
 // Error handler
 app.use((err, req, res, next) => {
-  res.status(500).send(
+  res.send(
     response({
       res: false,
       msg: "Internal Server Error, contact DEVELOPER for help.",

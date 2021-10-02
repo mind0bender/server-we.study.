@@ -16,7 +16,7 @@ UserAuth.post("/signup", (req, res, next) => {
   const data = req.body;
   const errs = [];
 
-  if (!data.name || !data.name.trim() || validator.isEmail(data.name)) {
+  if (!data.name || !data.name.trim() || validator.isEmail(data.name + "")) {
     errs.push(`Invalid name: ${data.name}`);
   }
   if (!data.email) {
@@ -105,7 +105,7 @@ UserAuth.post("/signin", (req, res, next) => {
   if (!data.nameOrEmail || !data.nameOrEmail.trim()) {
     errs.push(`Name or Email is required`);
   } else {
-    if (data.nameOrEmail && validator.isEmail(data.nameOrEmail)) {
+    if (data.nameOrEmail && validator.isEmail(data.nameOrEmail + "")) {
       signinWith = { email: data.nameOrEmail };
     } else if (data.nameOrEmail && data.nameOrEmail.trim()) {
       signinWith = { name: data.nameOrEmail };
@@ -121,7 +121,7 @@ UserAuth.post("/signin", (req, res, next) => {
   }
 
   if (errs.length) {
-    res.status(401).send(
+    res.send(
       response({
         res: false,
         errs,
@@ -151,7 +151,7 @@ UserAuth.post("/signin", (req, res, next) => {
                     })
                   );
                 } else {
-                  res.status(401).send(
+                  ressend(
                     response({
                       res: false,
                       errs: ["Wrong password"],
@@ -163,7 +163,7 @@ UserAuth.post("/signin", (req, res, next) => {
             })
             .catch(next);
         } else {
-          res.status(401).send(
+          res.send(
             response({
               res: false,
               errs: ["user not found"],
@@ -219,7 +219,7 @@ UserAuth.post("/verify", (req, res, next) => {
                   })
                   .catch(next);
               } else {
-                res.status(401).send(
+                res.send(
                   response({
                     res: false,
                     data: {
@@ -235,7 +235,7 @@ UserAuth.post("/verify", (req, res, next) => {
         }
       });
     } catch (error) {
-      res.status(401).send(
+      res.send(
         response({
           res: false,
           data: { token },

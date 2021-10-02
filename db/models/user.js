@@ -9,9 +9,17 @@ const User = Schema({
     type: String,
     required: true,
   },
+  about: {
+    type: String,
+    default: "",
+  },
   password: {
     type: String,
     required: true,
+  },
+  displayPicture: {
+    type: String,
+    default: process.env.SERVER_URL + "/avatar.png",
   },
   groups: [
     {
@@ -20,4 +28,5 @@ const User = Schema({
     },
   ],
 });
+
 module.exports = model("user", User);
