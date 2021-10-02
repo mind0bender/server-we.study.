@@ -60,7 +60,7 @@ UserRouter.post("/update", (req, res, next) => {
         if (err) throw new Error(err);
         else {
           user
-            .exists({ _id: decoded._id, name: data.user.name })
+            .exists({ _id: decoded._id, name: decoded.name })
             .then((exists) => {
               if (exists) {
                 user
