@@ -19,11 +19,17 @@ const User = Schema({
   },
   displayPicture: {
     type: String,
-    default: process.env.SERVER_URL + "/avatar.png",
+    default: "https://cdn.filestackcontent.com/aDB3bOkQf2A59bGOA26A",
   },
   groups: [
     {
       type: Schema.Types.ObjectId,
+      required: true,
+    },
+  ],
+  notifications: [
+    {
+      type: String,
       required: true,
     },
   ],

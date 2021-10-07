@@ -11,11 +11,13 @@ connect(
 
 const db = connection;
 
+console.log(greenBright.bold("connecting to DB\n"));
+
 db.on("open", () => {
-  console.log(greenBright.bold("    Connected to DB"));
+  console.log(greenBright.bold("connected to DB\n"));
 });
 
 db.once("error", (err) => {
-  console.log(bgRedBright.bold("    Problem in DB"));
+  console.log(bgRedBright.bold("problem in DB\n"));
   console.log(err);
 });

@@ -1,6 +1,6 @@
 require("dotenv").config();
 const bodyParser = require("body-parser");
-const { underline } = require("chalk");
+const { underline, greenBright } = require("chalk");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -22,12 +22,14 @@ app.use(
 const PORT = process.env.PORT || 8080;
 const ISDEV = process.env.NODE_ENV !== "production";
 
+console.clear();
+console.log(greenBright(`Starting server on PORT ${PORT}\n`));
+
 app.listen(PORT, () => {
-  console.clear();
   console.log(
     `Server started on PORT ${underline.blueBright(PORT)} at ${Date()} as ${
       ISDEV ? "DEV" : "PROD"
-    }`
+    }\n`
   );
 });
 
