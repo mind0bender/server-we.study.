@@ -12,6 +12,7 @@ const UserAuth = Router();
  * * User signup route
  * ? Should i implement google signup also?
  */
+
 UserAuth.post("/signup", (req, res, next) => {
   const data = req.body;
   const errs = [];
@@ -224,6 +225,7 @@ UserAuth.post("/verify", (req, res, next) => {
                     res: false,
                     data: {
                       token,
+                      decoded,
                     },
                     errs: ["User not found"],
                     msg: "User not found",

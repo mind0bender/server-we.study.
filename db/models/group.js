@@ -5,6 +5,10 @@ const Group = Schema({
     type: String,
     required: true,
   },
+  desc: {
+    type: String,
+    required: true,
+  },
   admin: {
     type: Schema.Types.ObjectId,
     required: true,
