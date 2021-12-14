@@ -8,7 +8,7 @@ const { tokenDecoder, tokenGenerator } = require("../../utils/jsonwebtoken");
 const GroupRouter = Router();
 
 /**
- * @param data name token displayPicture;
+ * @param data name(string) token(string=>jwt) displayPicture;
  * * Group creation route
  */
 GroupRouter.post("/create", (req, res, next) => {
@@ -108,6 +108,32 @@ GroupRouter.post("/create", (req, res, next) => {
         })
       );
     }
+  }
+});
+
+/**
+ * @param data group(string=>_id) token(string=>jwt);
+ * * Group Join route
+ */
+
+GroupRouter.post("/joinrequest", (req, res, next) => {
+  const data = req.body;
+  const errs = [];
+  if (!data.group || !data.group.trim()) {
+    errs.push(`Group is required ${data.group}`);
+  }
+  if (!data.token || !data.group.trim()) {
+    errs.push(`Token is required ${data.token}`);
+  }
+  if (errs.length) {
+    res.send(
+      response({
+        res: false,
+        data,
+        errs,
+        msg: "Group join request failed",
+      })
+    );
   }
 });
 

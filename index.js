@@ -68,9 +68,11 @@ app.use("*", (req, res, next) => {
       msg: `Route not found`,
       data: {
         path: req.originalUrl,
+        route: req.params["0"],
         query: req.query,
         params: req.params,
       },
+      errs: [`route not found ${req.params["0"]}`],
     })
   );
 });

@@ -27,12 +27,6 @@ const User = Schema({
       required: true,
     },
   ],
-  notifications: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
 });
 
 module.exports = model("user", User);
